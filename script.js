@@ -43,6 +43,7 @@ $(document).ready(function () {
       console.log(response);
       //convert kelvin to F
       var kelvinTemp = response.main.temp;
+      console.log(response.main.temp);
       var farenTemp = Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
       var windSpeed = response.wind.speed;
       var humidity = response.main.humidity;
