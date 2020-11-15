@@ -43,7 +43,6 @@ $(document).ready(function () {
       console.log(response);
       //convert kelvin to F
       var kelvinTemp = response.main.temp;
-      console.log(response.main.temp);
       var farenTemp = Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
       var windSpeed = response.wind.speed;
       var humidity = response.main.humidity;
@@ -54,7 +53,7 @@ $(document).ready(function () {
       var mainWeatherDiv = $("<div>");
       mainForecastEl.append(mainWeatherDiv);
       var todayCity = $("<h3>");
-      todayCity.text(searchEl.val() + " " + currentMoment);
+      todayCity.text(citySearchEl.val() + " " + currentMoment);
       todayCity.addClass("city-style");
       mainWeatherDiv.append(todayCity);
       var todayImageIcon = $("<img>").attr(
