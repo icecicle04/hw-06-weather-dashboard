@@ -15,7 +15,7 @@ $(document).ready(function () {
     $("#mainForecast").empty();
     $("#fiveDayForecast").empty();
     //save to local storage
-    searchedCity.push(searchInputEl.val());
+    searchedCity.push(searchEl.val());
     localStorage.setItem("city", JSON.stringify(searchedCity));
     $("city-list").empty();
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
   var queryURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    searchInputEl.val() +
+    searchEl.val() +
     "&appid=a9ce3ccc4f587d59001355747672499e";
 
   $.ajax({
