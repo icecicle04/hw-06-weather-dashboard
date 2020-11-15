@@ -17,23 +17,26 @@
     <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
-    <nav>
-      <h1 class="jumbotron">Weather Dashboard</h1>
-    </nav>
-    <main>
-      <div class="row">
-        <div class="col-md-2">
-          <h3>Search City</h3>
-          <input id="citySearch" type="text" />
-          <br />
-          <button id="searchButton">search button</button>
+    <div class="container">
+      <nav>
+        <h1 class="jumbotron">Weather Dashboard</h1>
+      </nav>
+      <main>
+        <div class="row">
+          <div class="col-md-2">
+            <h3>Search City</h3>
+            <input id="citySearch" type="text" />
+            <br />
+            <button id="searchButton">search button</button>
+            <ul id="city-list"></ul>
+          </div>
+          <div class="col-md-10">
+            <div class="row" id="mainForecast"></div>
+            <div class="row" id="fiveDayForecast"></div>
+          </div>
         </div>
-        <div class="col-md-10">
-          <div class="row" id="mainForecast"></div>
-          <div class="row" id="fiveDayForecast"></div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
     <!-- personal js -->
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
