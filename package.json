@@ -1,0 +1,25 @@
+{
+  "name": "hw-06-weather-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icecicle04/hw-06-weather-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/icecicle04/hw-06-weather-dashboard/issues"
+  },
+  "homepage": "https://github.com/icecicle04/hw-06-weather-dashboard#readme"
+}

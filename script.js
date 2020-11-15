@@ -32,7 +32,7 @@ $(document).ready(function () {
     // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
 
     var queryURL =
-      "api.openweathermap.org/data/2.5/weather?q=" +
+      "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=" +
       citySearchEl.val() +
       "&appid=2f4b6e6efa53ced733b1323a36800f4d";
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response.main.temperature);
+      console.log(response);
       //convert kelvin to F
       var kelvinTemp = response.main.temp;
       var farenTemp = Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
@@ -58,7 +58,7 @@ $(document).ready(function () {
       mainWeatherDiv.append(todayCity);
       var todayImageIcon = $("<img>").attr(
         "src",
-        "http://openweathermap.org/img/wn/" + todayImage + "@3x.png"
+        "http://openweathermap.org/img/wn/" + todayImage + "@2x.png"
       );
       mainWeatherDiv.append(todayImageIcon);
 
@@ -74,18 +74,18 @@ $(document).ready(function () {
       mainWeatherDiv.append(todayHumidity);
     });
 
-    for (var i = 0; i < 10; i++) {
-      var emptyEl = $("<div>");
-      emptyEl.addClass("test");
-      subForecastEl.append(emptyEl);
+    // for (var i = 0; i < 10; i++) {
+    //   var emptyEl = $("<div>");
+    //   emptyEl.addClass("test");
+    //   subForecastEl.append(emptyEl);
 
-      var titleTemp = $("<h5>");
-      titleTemp.text("placeholder");
-      emptyEl.append(titleTemp);
+    //   var titleTemp = $("<h5>");
+    //   titleTemp.text("placeholder");
+    //   emptyEl.append(titleTemp);
 
-      var titleCity = $("<p>");
-      titleCity.text("city");
-      emptyEl.append(titleCity);
-    }
+    //   var titleCity = $("<p>");
+    //   titleCity.text("city");
+    //   emptyEl.append(titleCity);
+    // }
   });
 });
