@@ -28,17 +28,36 @@ $(document).ready(function () {
     }
   });
 
-  for (var i = 0; i < 10; i++) {
-    var emptyEl = $("<div>");
-    emptyEl.addClass("test");
-    subForecastEl.append(emptyEl);
+  // ajax call
 
-    var titleTemp = $("<h5>");
-    titleTemp.text("placeholder");
-    emptyEl.append(titleTemp);
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    searchInputEl.val() +
+    "&appid=a9ce3ccc4f587d59001355747672499e";
 
-    var titleCity = $("<p>");
-    titleCity.text("city");
-    emptyEl.append(titleCity);
-  }
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    //convert kelvin to F
+    var kelvinTemp = response.main.temp;
+    var farenTemp = Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
+    var windSpeed = response.wind.speed;
+    var humidity = response.main.humidity;
+    var todayImage = response.weather[0].icon;
+  });
 });
+
+for (var i = 0; i < 10; i++) {
+  var emptyEl = $("<div>");
+  emptyEl.addClass("test");
+  subForecastEl.append(emptyEl);
+
+  var titleTemp = $("<h5>");
+  titleTemp.text("placeholder");
+  emptyEl.append(titleTemp);
+
+  var titleCity = $("<p>");
+  titleCity.text("city");
+  emptyEl.append(titleCity);
+}
