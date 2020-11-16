@@ -76,12 +76,46 @@ $(document).ready(function () {
 
     // 5 day forecast calls
 
+    var query5dayURL =
+      "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=" +
+      citySearchEl.val() +
+      "&appid=2f4b6e6efa53ced733b1323a36800f4d";
+
     $.ajax({
       url: query5dayURL,
       method: "GET",
     }).then(function (result) {
       //5 day for loop
       console.log(result);
+
+      for (var i = 1; i < 6; i++) {
+        // console.log(response);
+        var fiveKelvinTemp = result.list[i * 8 - 1].main.temp;
+        var fiveNewTemp = Math.round(((fiveKelvinTemp - 273.15) * 9) / 5 + 32);
+        var fiveHumidity = result.list[i * 8 - 1].main.humidity;
+        var futureDays = moment().add(i, "days").format("MM/DD/YYYY");
+        var fiveDayIcon = result.list[i * 8 - 1].weather[0].icon;
+
+        //insert into 5 day forecast div
+        var emptyEl = $("<div>");
+        emptyEl.addClass("forecast");
+        emptyEl.attr("id", "empty-div");
+        subForecastEl.append(emptyEl);
+        var tomorrow = $("<h5>");
+        tomorrow.text(futureDays);
+        emptyEl.append(tomorrow);
+        var fiveDayIcon = $("<img>").attr(
+          "src",
+          "http://openweathermap.org/img/wn/" + fiveDayIcon + "@2x.png"
+        );
+        emptyEl.append(fiveDayIcon);
+        var titleTemp = $("<h6>");
+        titleTemp.text("Temp: " + fiveNewTemp + "F");
+        emptyEl.append(titleTemp);
+        var fiveHumidityEl = $("<h6>");
+        fiveHumidityEl.text("Humidity: " + fiveHumidity + "%");
+        emptyEl.append(fiveHumidityEl);
+      }
     });
 
     // for (var i = 0; i < 10; i++) {
