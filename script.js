@@ -6,26 +6,28 @@ $(document).ready(function () {
   var searchBtn = $("#searchButton");
   var mainForecastEl = $("#mainForecast");
   var subForecastEl = $("#fiveDayForecast");
-  var singleTruth = [];
+  var newCities = [];
 
   // on click, we want to dynamically populate the main forecast and five day forecast
   searchBtn.on("click", function () {
     // console.log("i've been clicked");
     // clear out the weather divs before populating the next city
-    $("#main-forecast").empty();
-    $("#five-day-forecast").empty();
+    $("#mainForecast").empty();
+    $("#fiveDayForecast").empty();
     // save user input to localStorage and populate new button of previous searches
-    singleTruth.push(citySearchEl.val());
-    localStorage.setItem("city", JSON.stringify(singleTruth));
+    newCities.push(citySearchEl.val());
+    localStorage.setItem("city", JSON.stringify(newCities));
     $("#city-list").empty();
     // retrieve local storage city input and dynamically generate buttons below the search button
     var populatedCity = JSON.parse(localStorage.getItem("city"));
+    // console.log(localStorage);
     for (var i = 0; i < populatedCity.length; i++) {
       // console.log(populatedCity);
       var searchCityBtn = $("<button>");
       searchCityBtn.text(populatedCity[i]);
       $("#city-list").prepend(searchCityBtn);
     }
+    localStorage.getItem("city", JSON.stringify(newCities));
 
     // ajax call
 
@@ -40,7 +42,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
+      // console.log(response);
       //convert kelvin to F
       var kelvinTemp = response.main.temp;
       var farenTemp = Math.round(((kelvinTemp - 273.15) * 9) / 5 + 32);
@@ -86,7 +88,7 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (result) {
       //5 day for loop
-      console.log(result);
+      // console.log(result);
 
       for (var i = 1; i < 6; i++) {
         // console.log(response);
