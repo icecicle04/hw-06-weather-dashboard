@@ -74,6 +74,16 @@ $(document).ready(function () {
       mainWeatherDiv.prepend(todayHumidity);
     });
 
+    // 5 day forecast calls
+
+    $.ajax({
+      url: query5dayURL,
+      method: "GET",
+    }).then(function (result) {
+      //5 day for loop
+      console.log(result);
+    });
+
     // for (var i = 0; i < 10; i++) {
     //   var emptyEl = $("<div>");
     //   emptyEl.addClass("test");
