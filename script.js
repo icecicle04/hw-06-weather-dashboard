@@ -48,14 +48,14 @@ $(document).ready(function () {
       var humidity = response.main.humidity;
       var todayImage = response.weather[0].icon;
 
-      var currentMoment = moment().format("DD/MM/YYY");
+      var currentMoment = moment().format("MMM Do YYYY");
       //main forecast
       var mainWeatherDiv = $("<div>");
-      mainForecastEl.append(mainWeatherDiv);
+      mainForecastEl.prepend(mainWeatherDiv);
       var todayCity = $("<h3>");
       todayCity.text(citySearchEl.val() + " " + currentMoment);
       todayCity.addClass("city-style");
-      mainWeatherDiv.append(todayCity);
+      mainWeatherDiv.prepend(todayCity);
       var todayImageIcon = $("<img>").attr(
         "src",
         "http://openweathermap.org/img/wn/" + todayImage + "@2x.png"
@@ -70,7 +70,7 @@ $(document).ready(function () {
       todayWindSpeed.text("Wind Speed: " + windSpeed + "MPH");
       mainWeatherDiv.append(todayWindSpeed);
       var todayHumidity = $("<h5>");
-      todayHumidity.text("Temperature: " + humidity + "%");
+      todayHumidity.text("Humidity: " + humidity + "%");
       mainWeatherDiv.append(todayHumidity);
     });
 
