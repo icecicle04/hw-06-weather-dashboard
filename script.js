@@ -60,18 +60,18 @@ $(document).ready(function () {
         "src",
         "http://openweathermap.org/img/wn/" + todayImage + "@2x.png"
       );
-      mainWeatherDiv.append(todayImageIcon);
+      mainWeatherDiv.prepend(todayImageIcon);
 
       //today
       var todayTemp = $("<h5>");
       todayTemp.text("Temperature: " + farenTemp + "F");
-      mainWeatherDiv.append(todayTemp);
+      mainWeatherDiv.prepend(todayTemp);
       var todayWindSpeed = $("<h5>");
       todayWindSpeed.text("Wind Speed: " + windSpeed + "MPH");
-      mainWeatherDiv.append(todayWindSpeed);
+      mainWeatherDiv.prepend(todayWindSpeed);
       var todayHumidity = $("<h5>");
       todayHumidity.text("Humidity: " + humidity + "%");
-      mainWeatherDiv.append(todayHumidity);
+      mainWeatherDiv.prepend(todayHumidity);
     });
 
     // for (var i = 0; i < 10; i++) {
